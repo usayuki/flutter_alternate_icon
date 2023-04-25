@@ -58,14 +58,14 @@
 		</dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>IconBlack</key>
+			<key>iconAppBlack</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>Icon-App-Black</string>
 				</array>
 			</dict>
-			<key>IconOutline</key>
+			<key>iconAppOutline</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>

@@ -1,3 +1,4 @@
+import 'package:example/gen/alternate_icons.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_alternate_icon/flutter_alternate_icon.dart';
 
@@ -30,17 +31,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<String> alternateIconNames = [];
-
-  @override
-  void initState() {
-    super.initState();
-    FlutterAlternateIcon.getAlternateIconNames().then((value) {
-      setState(() {
-        alternateIconNames = value;
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,17 +52,17 @@ class _MyHomePageState extends State<MyHomePage> {
           ListView.builder(
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              final iconName = alternateIconNames[index];
+              final icon = AlternateIcons.values[index];
               return InkWell(
-                child: Text(iconName),
+                child: Text(icon.name),
                 onTap: () async {
                   try {
-                    await FlutterAlternateIcon.setAlternateIcon(iconName);
+                    await FlutterAlternateIcon.setAlternateIcon(icon.name);
                   } catch (e) {}
                 },
               );
             },
-            itemCount: alternateIconNames.length,
+            itemCount: AlternateIcons.values.length,
           ),
         ],
       ),
