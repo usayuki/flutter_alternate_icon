@@ -8,7 +8,11 @@ environment:
   sdk: '>=2.18.1 <3.0.0'
 
 dependencies:
-  alternate_icon_gen_core: 1.0.1
+  alternate_icon_gen_core:
+    git:
+      url: git@github.com:usayuki/flutter_alternate_icon.git
+      ref: 0.0.4
+      path: generator/core
   build: '>=2.0.0 <3.0.0'
   crypto: '>=3.0.0 <4.0.0'
   glob: '>=2.0.0 <3.0.0'
