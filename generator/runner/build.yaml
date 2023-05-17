@@ -8,6 +8,6 @@ builders:
   alternate_icon_gen_runner:
     import: 'package:alternate_icon_gen_runner/alternate_icon_gen_runner.dart'
     builder_factories: ['build']
-    build_extensions: { '$package$': ['.gen.dart'] }
+    build_extensions: { '$package$': ['.gen.dart', '.plist'] }
     auto_apply: dependents
     build_to: source

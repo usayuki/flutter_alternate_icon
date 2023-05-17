@@ -16,6 +16,8 @@ class FlutterGenerator {
   final File pubspecFile;
   final String alternateIconsFileName;
 
+  String get plistFilePath => normalize(join(pubspecFile.parent.path, 'ios/Runner/Info.plist'));
+
   Future<void> build({Config? config, FileWriter? writer}) async {
     config ??= loadPubspecConfigOrNull(pubspecFile);
     if (config == null) return;
@@ -53,6 +55,7 @@ class FlutterGenerator {
       final generatedIosInfoPlist = generateIosInfoPlist(
         AssetsGenConfig.fromConfig(pubspecFile, config),
         formatter,
+        plistFilePath,
       );
       writer(generatedIosInfoPlist, plistFilePath);
       stdout.writeln('Generated: $plistFilePath');

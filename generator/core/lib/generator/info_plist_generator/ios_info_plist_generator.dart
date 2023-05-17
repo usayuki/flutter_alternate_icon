@@ -20,11 +20,10 @@ class PlistValue {
   String assetName;
 }
 
-String get plistFilePath => 'ios/Runner/Info.plist';
-
 String generateIosInfoPlist(
   AssetsGenConfig config,
   DartFormatter formatter,
+  String plistFilePath,
 ) {
   if (config.flutterAlternateIcon.asset.isEmpty) {
     throw Exception('The value of "flutter_Alternate_Icon/asset:" is incorrect.');
@@ -38,7 +37,7 @@ String generateIosInfoPlist(
       .replaceFirst(config.flutterAlternateIcon.asset, ''),
   );
 
-  final map = _parseBasePlistToMap();
+  final map = _parseBasePlistToMap(plistFilePath);
   final newMap = _replaceValue(map, alternateIconPlistMap);
   final newXml = _mapToXml(newMap);
   return newXml;
@@ -87,7 +86,7 @@ Map _assetsPlistKeyDefinition(List<PlistValue> plistValues) {
   return map;
 }
 
-Map _parseBasePlistToMap() {
+Map _parseBasePlistToMap(String plistFilePath) {
   final plistToMap = PlistToMap();
   final file = File(plistFilePath);
   final map = plistToMap.parse(file.readAsStringSync());

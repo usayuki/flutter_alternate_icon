@@ -48,7 +48,7 @@ class AlternateIconGenBuilder extends Builder {
           generator.alternateIconsFileName,
         ])
           join(output, name),
-          plistFilePath,
+          generator.plistFilePath,
       ],
     };
   }
