@@ -11,7 +11,7 @@ class MapToXml {
 </plist>
 ''';
 
-  static const eol = '\r\n';
+  static const eol = '\n';
 
   String convert(Map map) {
     var xml = StringBuffer();
