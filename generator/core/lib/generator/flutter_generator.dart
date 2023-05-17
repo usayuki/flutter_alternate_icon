@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:alternate_icon_gen_core/generator/icon_name_enum_generator.dart';
+import 'package:alternate_icon_gen_core/generator/enum_generator/icon_name_enum_generator.dart';
+import 'package:alternate_icon_gen_core/generator/info_plist_generator/ios_info_plist_generator.dart';
 import 'package:alternate_icon_gen_core/setting/config.dart';
 import 'package:alternate_icon_gen_core/util/file.dart';
 import 'package:dart_style/dart_style.dart';
@@ -9,11 +10,11 @@ import 'package:path/path.dart';
 class FlutterGenerator {
   const FlutterGenerator(
     this.pubspecFile, {
-    this.alternateIconsName = 'alternate_icons.gen.dart',
+    this.alternateIconsFileName = 'alternate_icons.gen.dart',
   });
 
   final File pubspecFile;
-  final String alternateIconsName;
+  final String alternateIconsFileName;
 
   Future<void> build({Config? config, FileWriter? writer}) async {
     config ??= loadPubspecConfigOrNull(pubspecFile);
@@ -40,14 +41,21 @@ class FlutterGenerator {
     }
 
     if (asset.isNotEmpty) {
-      final generated = generateAssets(
+      final generatedEnum = generateEnum(
         AssetsGenConfig.fromConfig(pubspecFile, config),
         formatter,
       );
       final assetsPath =
-          normalize(join(pubspecFile.parent.path, output, alternateIconsName));
-      writer(generated, assetsPath);
+          normalize(join(pubspecFile.parent.path, output, alternateIconsFileName));
+      writer(generatedEnum, assetsPath);
       stdout.writeln('Generated: $assetsPath');
+
+      final generatedIosInfoPlist = generateIosInfoPlist(
+        AssetsGenConfig.fromConfig(pubspecFile, config),
+        formatter,
+      );
+      writer(generatedIosInfoPlist, plistFilePath);
+      stdout.writeln('Generated: $plistFilePath');
     }
 
     stdout.writeln('AlternateIconGen finished.');

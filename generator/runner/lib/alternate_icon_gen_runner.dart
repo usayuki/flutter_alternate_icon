@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:alternate_icon_gen_core/generator/flutter_generator.dart';
+import 'package:alternate_icon_gen_core/generator/info_plist_generator/ios_info_plist_generator.dart';
 import 'package:alternate_icon_gen_core/setting/config.dart';
 import 'package:build/build.dart';
 import 'package:crypto/crypto.dart';
@@ -24,7 +25,6 @@ class AlternateIconGenBuilder extends Builder {
 
   @override
   Future<void> build(BuildStep buildStep) async {
-    print('hoge');
     if (_config == null) return;
     final state = await _createState(_config!, buildStep);
     if (state.shouldSkipGenerate(_currentState)) return;
@@ -45,9 +45,10 @@ class AlternateIconGenBuilder extends Builder {
     return {
       r'$package$': [
         for (final name in [
-          generator.alternateIconsName,
+          generator.alternateIconsFileName,
         ])
           join(output, name),
+          plistFilePath,
       ],
     };
   }

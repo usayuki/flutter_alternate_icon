@@ -35,7 +35,7 @@ String get header {
 ''';
 }
 
-String generateAssets(
+String generateEnum(
   AssetsGenConfig config,
   DartFormatter formatter,
 ) {

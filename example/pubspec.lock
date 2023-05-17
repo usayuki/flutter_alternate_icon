@@ -14,14 +14,14 @@ packages:
       path: "../generator/core"
       relative: true
     source: path
-    version: "1.0.0+1"
+    version: "1.0.1"
   alternate_icon_gen_runner:
     dependency: "direct dev"
     description:
       path: "../generator/runner"
       relative: true
     source: path
-    version: "1.0.0+1"
+    version: "1.0.1"
   analyzer:
     dependency: transitive
     description:
@@ -333,6 +333,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.2"
+  petitparser:
+    dependency: transitive
+    description:
+      name: petitparser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.1.0"
   pool:
     dependency: transitive
     description:
@@ -464,6 +471,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.4.0"
+  xml:
+    dependency: transitive
+    description:
+      name: xml
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "6.1.0"
   yaml:
     dependency: transitive
     description:
