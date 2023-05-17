@@ -11,7 +11,7 @@ dependencies:
   alternate_icon_gen_core:
     git:
       url: git@github.com:usayuki/flutter_alternate_icon.git
-      ref: 0.0.5
+      ref: 0.0.6
       path: generator/core
   build: '>=2.0.0 <3.0.0'
   crypto: '>=3.0.0 <4.0.0'
