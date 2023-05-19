@@ -8,7 +8,7 @@ Requires iOS 10.3 or later and Android 8 or later.
 ## Installation
 
 1. Add [build_runner](https://pub.dev/packages/build_runner) and [flutter_alternate_icon](https://github.com/usayuki/flutter_alternate_icon) to your package's pubspec.yaml file:
-```
+```yaml
 dependencies:
   flutter_alternate_icon:
     git:
@@ -33,7 +33,7 @@ $ flutter pub get
 
 1. [flutter_alternate_icon](https://github.com/usayuki/flutter_alternate_icon) generates a dart file and Info.plist file based on the key **flutter_alternate_icon** in [pubspec.yaml](https://dart.dev/tools/pub/pubspec).
 The default configuration can be found [here](https://github.com/usayuki/flutter_alternate_icon/blob/main/generator/core/lib/setting/config_default.dart).
-```
+```yaml
 # pubspec.yaml
 # ...
 
@@ -48,7 +48,7 @@ $ flutter packages pub run build_runner build
 ```
 
 3. From your Dart code, you need to import the plugin and use it's static methods:
-```
+```dart
 import 'package:flutter_alternate_icon/flutter_alternate_icon.dart';
 import 'package:milo_app/gen/alternate_icons.gen.dart';
 
